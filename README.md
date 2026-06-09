@@ -23,15 +23,25 @@
 *   **YouTube MD3 (`youtube-md3.user.css`):**
     *   Кастомный волнистый прогресс-бар (MD3 Wavy Linear) в видеоплеере.
     *   Замена стандартных индикаторов загрузки на анимацию морфинга (Morphing Spinner) практически на всех элементах интерфейса.
+
+    <video src="md3_youtube.mp4" width="100%" autoplay loop muted playsinline></video>
+
 *   **Gemini MD3 (`gemini-md3.user.css`):**
     *   Замена стандартной анимации загрузки ответов нейросети на уникальный лоадер с плавной морфинг-анимацией (Morphing Spinner).
+
+    <video src="md3_gemini.mp4" width="100%" autoplay loop muted playsinline></video>
+
 *   **ChatGPT MD3 (`chatgpt-md3.user.css`):**
     *   Замена стандартного индикатора ожидания ответов нейросети на кастомный лоадер с плавной морфинг-анимацией (Morphing Spinner).
+
+    <video src="md3_gpt.mp4" width="100%" autoplay loop muted playsinline></video>
 
 ### 🦊 4. Firefox UI (`userChrome.css`)
 *   Кастомизация интерфейса самого браузера Firefox.
 *   Скругленные вкладки, сглаженные углы окон веб-страниц, обновленные цвета панелей.
 *   **Главная фишка:** Во время загрузки страницы заменяет стандартную иконку сайта (favicon) на вкладке на кастомный анимированный морфинг-лоадер.
+
+<video src="md3_firefox.mp4" width="100%" autoplay loop muted playsinline></video>
 
 ---
 
