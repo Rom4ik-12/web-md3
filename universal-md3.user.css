@@ -132,59 +132,62 @@
     height: 36px !important;
     background: transparent !important;
     cursor: pointer !important;
-    overflow: hidden !important;
+    overflow: hidden !important; /* Clips the Webkit thumb shadow within the track */
   }
 
   /* Webkit Track (Chrome, Safari, Edge, Opera) */
   input[type="range"]::-webkit-slider-runnable-track {
-    height: 4px !important;
+    height: 20px !important;
     background: var(--md3-surface-container-highest) !important;
-    border-radius: 2px !important;
+    border-radius: 6px 20px 20px 6px !important; /* Emulates active/inactive border radiuses */
+    border: none !important;
   }
 
-  /* Webkit Thumb */
+  /* Webkit Thumb (Vertical Handle) */
   input[type="range"]::-webkit-slider-thumb {
     appearance: none !important;
     -webkit-appearance: none !important;
-    height: 20px !important;
-    width: 20px !important;
-    border-radius: 50% !important;
+    height: 32px !important;
+    width: 4px !important;
+    border-radius: 2px !important;
     background: var(--md3-primary) !important;
-    margin-top: -8px !important;
-    box-shadow: -100vw 0 0 100vw var(--md3-primary) !important;
+    border: none !important;
+    margin-top: -6px !important; /* Centers 32px handle in 20px track: (20 - 32)/2 = -6px */
+    box-shadow: -100vw 0 0 100vw var(--md3-primary) !important; /* Filled track shadow */
     transition: transform 0.1s, background-color 0.2s !important;
   }
 
   input[type="range"]:active::-webkit-slider-thumb {
-    transform: scale(1.2) !important;
+    transform: scaleX(1.5) scaleY(1.1) !important;
   }
 
   /* Firefox Track */
   input[type="range"]::-moz-range-track {
-    height: 4px !important;
+    height: 20px !important;
     background: var(--md3-surface-container-highest) !important;
-    border-radius: 2px !important;
+    border-radius: 6px !important;
+    border: none !important;
   }
 
   /* Firefox Active Track portion */
   input[type="range"]::-moz-range-progress {
-    height: 4px !important;
+    height: 20px !important;
     background-color: var(--md3-primary) !important;
-    border-radius: 2px !important;
+    border-radius: 6px 2px 2px 6px !important;
   }
 
-  /* Firefox Thumb */
+  /* Firefox Thumb (Vertical Handle) */
   input[type="range"]::-moz-range-thumb {
-    height: 20px !important;
-    width: 20px !important;
+    height: 32px !important;
+    width: 4px !important;
     border: none !important;
-    border-radius: 50% !important;
+    border-radius: 2px !important;
     background: var(--md3-primary) !important;
     transition: transform 0.1s, background-color 0.2s !important;
   }
 
   input[type="range"]:active::-moz-range-thumb {
-    transform: scale(1.2) !important;
+    transform: scaleX(1.5) scaleY(1.1) !important;
   }
 
   /* ==========================================
