@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MD3 Universal Style Test Bench</title>
+  <style>
+    body {
+      font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 40px auto;
+      max-width: 800px;
+      padding: 0 20px;
+      background-color: #fbfafe; /* MD3 Light Surface */
+      color: #1c1b1f; /* MD3 Light On Surface */
+    }
+
+    h1, h2 {
+      color: #6750a4; /* MD3 Primary */
+    }
+
+    .section {
+      background: #ffffff;
+      border: 1px solid #e7e0ec;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+
+    .label {
+      flex: 1;
+      font-size: 16px;
+    }
+
+    /* Dummy CSS matching the throbber sizes when not set by loaders to verify rendering */
+    .loading-spinner, .spinner-icon, [role="progressbar"] {
+      width: 48px;
+      height: 48px;
+    }
+  </style>
+  <!-- Link the usercss file directly for easy testing in browser local preview -->
+  <link rel="stylesheet" href="universal-md3.user.css">
+</head>
+<body>
+
+  <h1>Material Design 3 Universal Styles Test Bench</h1>
+  <p>Use this page to test the global MD3 styles applied by the <code>universal-md3.user.css</code> stylesheet.</p>
+
+  <!-- Loaders Section -->
+  <div class="section">
+    <h2>1. Loaders & Spinners</h2>
+
+    <div class="row">
+      <div class="label">Class: <code>loading-spinner</code></div>
+      <div class="loading-spinner"></div>
+    </div>
+
+    <div class="row">
+      <div class="label">Class: <code>spinner-icon</code></div>
+      <div class="spinner-icon"></div>
+    </div>
+
+    <div class="row">
+      <div class="label">Role: <code>progressbar</code></div>
+      <div role="progressbar">
+        <!-- Hidden overlay that should be clipped -->
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" stroke="red" stroke-width="8" fill="none" /></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toggles Section -->
+  <div class="section">
+    <h2>2. Toggle Switches</h2>
+
+    <div class="row">
+      <div class="label">Switches (role="switch"): Off / On</div>
+      <input type="checkbox" role="switch">
+      <input type="checkbox" role="switch" checked>
+    </div>
+
+    <div class="row">
+      <div class="label">Switches (class="switch"): Off / On</div>
+      <input type="checkbox" class="switch">
+      <input type="checkbox" class="switch" checked>
+    </div>
+
+    <div class="row">
+      <div class="label">Switches (class="toggle"): Off / On</div>
+      <input type="checkbox" class="toggle">
+      <input type="checkbox" class="toggle" checked>
+    </div>
+
+    <div class="row">
+      <div class="label">Container Switch wrapper: Off / On</div>
+      <label class="switch">
+        <input type="checkbox">
+      </label>
+      <label class="switch">
+        <input type="checkbox" checked>
+      </label>
+    </div>
+  </div>
+
+  <!-- Standard Checkboxes Section -->
+  <div class="section">
+    <h2>3. Standard Checkboxes</h2>
+
+    <div class="row">
+      <div class="label">Regular Checkbox: Off / On</div>
+      <input type="checkbox">
+      <input type="checkbox" checked>
+    </div>
+  </div>
+
+  <!-- Range Sliders Section -->
+  <div class="section">
+    <h2>4. Range Sliders</h2>
+
+    <div class="row">
+      <div class="label">Standard Slider (0-100)</div>
+      <input type="range" min="0" max="100" value="30" style="flex: 2;">
+    </div>
+
+    <div class="row">
+      <div class="label">Standard Slider (0-100, active/high value)</div>
+      <input type="range" min="0" max="100" value="75" style="flex: 2;">
+    </div>
+  </div>
+
+</body>
+</html>
