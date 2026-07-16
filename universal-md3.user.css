@@ -27,6 +27,7 @@
   .toggle input[type="checkbox"] {
     appearance: none !important;
     -webkit-appearance: none !important;
+    -moz-appearance: none !important;
     width: 52px !important;
     height: 32px !important;
     border-radius: 16px !important;
@@ -82,9 +83,10 @@
   /* ==========================================
      2. MD3 Standard Checkboxes
      ========================================== */
-  input[type="checkbox"]:not([role="switch"]):not(.switch):not(.toggle) {
+  input[type="checkbox"]:not([role="switch"]):not(.switch):not(.toggle):not(.switch *):not(.toggle *) {
     appearance: none !important;
     -webkit-appearance: none !important;
+    -moz-appearance: none !important;
     width: 18px !important;
     height: 18px !important;
     border-radius: 4px !important;
@@ -99,12 +101,12 @@
     vertical-align: middle !important;
   }
 
-  input[type="checkbox"]:not([role="switch"]):not(.switch):not(.toggle):checked {
+  input[type="checkbox"]:not([role="switch"]):not(.switch):not(.toggle):not(.switch *):not(.toggle *):checked {
     background-color: var(--md3-primary) !important;
     border-color: var(--md3-primary) !important;
   }
 
-  input[type="checkbox"]:not([role="switch"]):not(.switch):not(.toggle)::after {
+  input[type="checkbox"]:not([role="switch"]):not(.switch):not(.toggle):not(.switch *):not(.toggle *)::after {
     content: "" !important;
     position: absolute !important;
     left: 4px !important;
@@ -117,7 +119,7 @@
     transition: transform 0.15s ease, border-color 0.15s !important;
   }
 
-  input[type="checkbox"]:not([role="switch"]):not(.switch):not(.toggle):checked::after {
+  input[type="checkbox"]:not([role="switch"]):not(.switch):not(.toggle):not(.switch *):not(.toggle *):checked::after {
     border-color: var(--md3-on-primary) !important;
     transform: rotate(45deg) scale(1) !important;
   }
