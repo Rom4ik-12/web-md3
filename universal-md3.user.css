@@ -1,0 +1,253 @@
+/* ==UserStyle==
+@name         Universal MD3 Style (Loaders, Toggles, Sliders)
+@namespace    github.com/openstyles/stylus
+@version      1.0.0
+@description  Globally transforms loading indicators, switches/toggles, checkboxes, and sliders into Material Design 3 (MD3) style.
+@author       Antigravity
+@license      MIT
+==/UserStyle== */
+
+@-moz-document regexp("https?://.*") {
+
+  :root {
+    /* Safe dynamic color derivation based on website variables + fallbacks */
+    --md3-primary: var(--primary, var(--theme-color, var(--accent, var(--main-color, var(--color-primary, var(--color-accent, var(--yt-spec-brand-link-text, var(--google-blue-500, #6750a4))))))));
+    --md3-on-primary: #ffffff;
+    --md3-surface-container-highest: rgba(120, 120, 120, 0.12);
+    --md3-outline: rgba(120, 120, 120, 0.5);
+  }
+
+  /* ==========================================
+     1. MD3 Toggle Switches
+     ========================================== */
+  input[type="checkbox"][role="switch"],
+  input[type="checkbox"].switch,
+  input[type="checkbox"].toggle,
+  .switch input[type="checkbox"],
+  .toggle input[type="checkbox"] {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    width: 52px !important;
+    height: 32px !important;
+    border-radius: 16px !important;
+    background-color: var(--md3-surface-container-highest) !important;
+    border: 2px solid var(--md3-outline) !important;
+    position: relative !important;
+    outline: none !important;
+    cursor: pointer !important;
+    transition: background-color 0.2s, border-color 0.2s !important;
+    box-sizing: border-box !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+  }
+
+  input[type="checkbox"][role="switch"]::after,
+  input[type="checkbox"].switch::after,
+  input[type="checkbox"].toggle::after,
+  .switch input[type="checkbox"]::after,
+  .toggle input[type="checkbox"]::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 6px !important;
+    transform: translateY(-50%) !important;
+    width: 16px !important;
+    height: 16px !important;
+    border-radius: 50% !important;
+    background-color: var(--md3-outline) !important;
+    transition: left 0.2s, width 0.2s, height 0.2s, background-color 0.2s !important;
+  }
+
+  /* Checked Switch State */
+  input[type="checkbox"][role="switch"]:checked,
+  input[type="checkbox"].switch:checked,
+  input[type="checkbox"].toggle:checked,
+  .switch input[type="checkbox"]:checked,
+  .toggle input[type="checkbox"]:checked {
+    background-color: var(--md3-primary) !important;
+    border-color: var(--md3-primary) !important;
+  }
+
+  input[type="checkbox"][role="switch"]:checked::after,
+  input[type="checkbox"].switch:checked::after,
+  input[type="checkbox"].toggle:checked::after,
+  .switch input[type="checkbox"]:checked::after,
+  .toggle input[type="checkbox"]:checked::after {
+    left: 22px !important;
+    width: 24px !important;
+    height: 24px !important;
+    background-color: var(--md3-on-primary) !important;
+  }
+
+  /* ==========================================
+     2. MD3 Standard Checkboxes
+     ========================================== */
+  input[type="checkbox"]:not([role="switch"]):not(.switch):not(.toggle) {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    width: 18px !important;
+    height: 18px !important;
+    border-radius: 4px !important;
+    border: 2px solid var(--md3-outline) !important;
+    position: relative !important;
+    outline: none !important;
+    cursor: pointer !important;
+    background-color: transparent !important;
+    transition: background-color 0.2s, border-color 0.2s !important;
+    box-sizing: border-box !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+  }
+
+  input[type="checkbox"]:not([role="switch"]):not(.switch):not(.toggle):checked {
+    background-color: var(--md3-primary) !important;
+    border-color: var(--md3-primary) !important;
+  }
+
+  input[type="checkbox"]:not([role="switch"]):not(.switch):not(.toggle)::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 4px !important;
+    top: 1px !important;
+    width: 5px !important;
+    height: 9px !important;
+    border: solid transparent !important;
+    border-width: 0 2px 2px 0 !important;
+    transform: rotate(45deg) scale(0) !important;
+    transition: transform 0.15s ease, border-color 0.15s !important;
+  }
+
+  input[type="checkbox"]:not([role="switch"]):not(.switch):not(.toggle):checked::after {
+    border-color: var(--md3-on-primary) !important;
+    transform: rotate(45deg) scale(1) !important;
+  }
+
+  /* ==========================================
+     3. MD3 Sliders (Range input)
+     ========================================== */
+  input[type="range"] {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    width: 100% !important;
+    height: 36px !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    overflow: hidden !important;
+  }
+
+  /* Webkit Track (Chrome, Safari, Edge, Opera) */
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 4px !important;
+    background: var(--md3-surface-container-highest) !important;
+    border-radius: 2px !important;
+  }
+
+  /* Webkit Thumb */
+  input[type="range"]::-webkit-slider-thumb {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    height: 20px !important;
+    width: 20px !important;
+    border-radius: 50% !important;
+    background: var(--md3-primary) !important;
+    margin-top: -8px !important;
+    box-shadow: -100vw 0 0 100vw var(--md3-primary) !important;
+    transition: transform 0.1s, background-color 0.2s !important;
+  }
+
+  input[type="range"]:active::-webkit-slider-thumb {
+    transform: scale(1.2) !important;
+  }
+
+  /* Firefox Track */
+  input[type="range"]::-moz-range-track {
+    height: 4px !important;
+    background: var(--md3-surface-container-highest) !important;
+    border-radius: 2px !important;
+  }
+
+  /* Firefox Active Track portion */
+  input[type="range"]::-moz-range-progress {
+    height: 4px !important;
+    background-color: var(--md3-primary) !important;
+    border-radius: 2px !important;
+  }
+
+  /* Firefox Thumb */
+  input[type="range"]::-moz-range-thumb {
+    height: 20px !important;
+    width: 20px !important;
+    border: none !important;
+    border-radius: 50% !important;
+    background: var(--md3-primary) !important;
+    transition: transform 0.1s, background-color 0.2s !important;
+  }
+
+  input[type="range"]:active::-moz-range-thumb {
+    transform: scale(1.2) !important;
+  }
+
+  /* ==========================================
+     4. MD3 Morphing Loading Spinners
+     ========================================== */
+  .loading-spinner,
+  [class*="loading-spinner"],
+  [class*="spinner-icon"],
+  svg[class*="animate-spin"],
+  .animate-spin,
+  mat-spinner,
+  mat-progress-spinner,
+  .mat-mdc-progress-spinner,
+  .mat-progress-spinner,
+  .gmat-mdc-progress-spinner,
+  .thinking-dots-animation[lottie-animation],
+  [role="progressbar"]:not(input):not(textarea):not([contenteditable]),
+  .anim-rotate,
+  .Spinner,
+  svg.anim-rotate,
+  svg.Spinner,
+  svg.Spinner-icon {
+    background-color: var(--md3-primary) !important;
+    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 768 768'><g><animateTransform attributeName='transform' type='rotate' values='0 384 384;90 384 384;120 384 384;210 384 384;240 384 384;330 384 384;360 384 384;450 384 384;480 384 384;570 384 384;600 384 384;690 384 384;720 384 384' keyTimes='0.0000;0.0800;0.1667;0.2467;0.3333;0.4133;0.5000;0.5800;0.6667;0.7467;0.8333;0.9133;1.0000' keySplines='0.25 0.1 0.25 1;0.5 0 1 0.9;0.25 0.1 0.25 1;0.5 0 1 0.9;0.25 0.1 0.25 1;0.5 0 1 0.9;0.25 0.1 0.25 1;0.5 0 1 0.9;0.25 0.1 0.25 1;0.5 0 1 0.9;0.25 0.1 0.25 1;0.5 0 1 0.9' dur='4.8s' repeatCount='indefinite' calcMode='spline'/><g transform='translate(0, 768) scale(0.1, -0.1)'><path d='M3693 6530 c-23 -5 -70 -21 -105 -35 -35 -15 -101 -42 -148 -62 -99 -41 -123 -57 -208 -135 -48 -44 -75 -61 -120 -74 -31 -9 -89 -35 -127 -59 -100 -60 -134 -68 -270 -71 -156 -2 -345 -21 -394 -38 -21 -7 -58 -29 -82 -48 -24 -20 -69 -51 -100 -69 -85 -50 -191 -170 -240 -270 -23 -46 -52 -95 -64 -109 -33 -35 -62 -105 -69 -170 -15 -127 -30 -197 -49 -235 -41 -82 -145 -214 -277 -350 -123 -127 -138 -147 -164 -213 -16 -43 -48 -96 -76 -130 -71 -86 -75 -104 -75 -352 1 -244 4 -259 79 -364 24 -34 51 -85 60 -112 8 -27 36 -114 61 -193 58 -181 62 -251 21 -451 -35 -172 -31 -236 23 -348 21 -42 46 -102 56 -132 36 -112 70 -161 222 -321 71 -75 94 -89 203 -129 30 -11 76 -37 103 -59 46 -39 86 -57 177 -81 32 -9 55 -24 80 -53 43 -49 84 -91 134 -136 20 -18 52 -64 71 -101 33 -66 78 -122 199 -248 65 -68 98 -89 186 -117 30 -10 78 -33 106 -51 97 -64 114 -68 284 -69 168 0 204 7 324 67 84 42 171 58 326 58 155 0 242 -16 326 -58 118 -59 157 -67 314 -67 157 0 169 3 310 64 47 21 105 46 130 57 31 13 87 60 181 152 120 117 140 142 169 205 24 53 49 89 99 138 36 36 82 83 101 105 23 26 56 47 95 62 33 13 86 44 119 69 57 45 112 71 151 73 45 1 107 43 228 154 139 129 168 169 199 277 11 39 35 107 53 149 49 114 52 176 19 340 -42 208 -39 271 26 461 58 170 74 203 125 267 19 24 39 60 44 80 34 140 40 510 9 598 -8 23 -31 61 -50 85 -20 24 -54 78 -78 119 -31 55 -78 112 -179 215 -195 199 -278 331 -301 478 -33 210 -37 227 -78 280 -22 29 -54 80 -72 114 -46 88 -188 224 -257 247 -30 10 -74 37 -109 67 -31 28 -69 55 -83 61 -35 13 -165 26 -376 37 -191 11 -216 17 -295 80 -28 22 -70 46 -93 52 -63 17 -115 46 -166 94 -53 48 -72 59 -149 86 -30 10 -78 36 -106 58 -28 21 -62 44 -76 52 -30 16 -313 23 -377 9z' fill='white' opacity='1'><animate attributeName='opacity' values='1;1;0;0;1' keyTimes='0;0.1667;0.1697;0.9970;1' dur='4.8s' repeatCount='indefinite' calcMode='linear'/></path><path d='M3710 6476 c-25 -7 -108 -30 -184 -50 -159 -42 -164 -44 -231 -101 -27 -23 -81 -61 -120 -85 -38 -23 -92 -64 -120 -90 -27 -26 -69 -58 -93 -70 -24 -11 -70 -45 -102 -75 -32 -30 -81 -65 -109 -79 -28 -14 -78 -51 -113 -82 -35 -31 -88 -69 -119 -84 -30 -16 -78 -51 -106 -79 -32 -32 -77 -62 -118 -81 -37 -17 -95 -53 -129 -82 -33 -28 -88 -64 -122 -79 -33 -15 -82 -49 -110 -76 -27 -27 -78 -65 -113 -83 -35 -19 -75 -49 -90 -68 -14 -18 -62 -54 -106 -80 -44 -25 -111 -76 -150 -112 -38 -37 -91 -87 -117 -111 -28 -26 -80 -98 -127 -176 -100 -167 -114 -218 -113 -423 0 -165 15 -253 61 -357 34 -78 102 -280 135 -399 13 -46 40 -112 64 -151 34 -56 46 -90 62 -174 25 -132 42 -182 95 -283 36 -67 48 -107 74 -236 25 -127 39 -172 76 -248 30 -60 56 -136 75 -215 48 -196 51 -205 91 -272 22 -35 50 -95 64 -132 29 -79 133 -207 212 -263 26 -18 69 -53 94 -76 26 -23 64 -47 85 -53 171 -45 332 -81 397 -90 127 -18 708 -14 862 5 166 21 384 21 550 0 154 -19 735 -23 862 -5 97 13 383 83 420 103 16 8 46 33 68 56 22 23 53 49 70 57 37 20 136 113 186 176 25 31 46 74 60 120 12 40 43 113 69 162 41 77 53 111 78 235 22 112 39 163 69 225 47 93 77 186 104 328 10 56 29 122 42 147 13 25 36 69 51 98 15 28 40 111 57 184 22 98 39 149 67 198 54 94 59 110 81 224 23 119 34 150 65 191 66 87 96 222 96 431 -1 236 -12 275 -139 482 -49 79 -81 118 -135 164 -39 34 -83 76 -99 94 -15 18 -60 54 -100 81 -39 26 -95 67 -124 90 -28 23 -82 57 -120 76 -37 19 -93 55 -123 79 -30 25 -83 61 -116 81 -34 20 -88 58 -120 83 -33 25 -80 57 -106 70 -25 13 -66 47 -90 75 -31 36 -66 62 -122 90 -43 22 -99 60 -125 83 -25 24 -78 60 -117 79 -46 23 -90 56 -125 92 -30 32 -74 67 -99 80 -25 13 -70 43 -100 67 -30 25 -80 59 -110 77 -30 18 -86 57 -125 86 -39 30 -90 58 -115 65 -25 6 -99 30 -165 52 -104 36 -134 41 -225 44 -69 3 -120 -1 -150 -10z' fill='white' opacity='0'><animate attributeName='opacity' values='0;0;1;1;0;0' keyTimes='0;0.1637;0.1667;0.3333;0.3363;1' dur='4.8s' repeatCount='indefinite' calcMode='linear'/></path><path d='M3920 6233 c-228 -22 -258 -29 -361 -90 -37 -22 -88 -40 -154 -54 -125 -27 -139 -32 -200 -79 -27 -21 -81 -55 -120 -75 -38 -20 -97 -62 -130 -94 -33 -31 -76 -68 -95 -81 -50 -34 -911 -901 -994 -1000 -42 -51 -83 -114 -106 -164 -21 -45 -58 -104 -82 -131 -60 -67 -64 -75 -92 -210 -19 -88 -35 -135 -66 -192 -61 -111 -70 -166 -77 -493 -4 -236 -3 -305 11 -400 20 -134 39 -206 71 -270 13 -25 41 -99 64 -163 30 -88 52 -134 88 -182 30 -40 61 -97 79 -147 23 -65 41 -95 84 -143 31 -33 70 -82 88 -110 17 -27 50 -63 73 -80 22 -16 57 -52 78 -80 27 -35 58 -62 102 -85 35 -19 84 -53 109 -76 25 -23 70 -56 100 -74 30 -18 87 -56 125 -85 64 -49 81 -56 192 -84 68 -17 150 -44 183 -61 142 -72 313 -94 665 -87 363 8 403 14 540 81 76 38 136 60 195 71 106 21 134 33 189 79 25 21 74 52 110 69 36 18 94 59 130 92 36 33 82 71 101 85 46 32 894 881 944 945 22 28 56 68 77 90 21 22 56 78 77 125 22 47 60 108 84 135 60 67 64 75 92 210 19 88 35 135 66 192 61 111 70 166 77 493 4 236 3 305 -11 400 -20 134 -39 206 -71 270 -13 25 -41 99 -64 163 -30 88 -52 134 -88 182 -30 40 -61 97 -79 147 -23 65 -41 95 -84 143 -31 33 -70 83 -88 110 -17 28 -50 63 -73 80 -22 16 -57 52 -78 80 -26 35 -58 62 -101 84 -34 19 -87 55 -116 82 -29 27 -71 57 -93 68 -21 11 -75 47 -118 80 -73 55 -89 62 -189 87 -60 14 -147 44 -194 65 -154 69 -299 90 -607 87 -126 0 -244 -3 -263 -5z' fill='white' opacity='0'><animate attributeName='opacity' values='0;0;1;1;0;0' keyTimes='0;0.3303;0.3333;0.5000;0.5030;1' dur='4.8s' repeatCount='indefinite' calcMode='linear'/></path><path d='M3706 6544 c-22 -8 -65 -36 -95 -62 -31 -27 -85 -68 -120 -91 -35 -24 -80 -59 -100 -78 -20 -19 -63 -52 -96 -73 -33 -22 -77 -59 -98 -84 -21 -26 -61 -61 -90 -80 -29 -18 -67 -49 -85 -69 -57 -65 -74 -69 -322 -83 -124 -7 -273 -13 -333 -14 -117 0 -262 -27 -334 -61 -23 -11 -61 -39 -84 -62 -65 -65 -147 -196 -163 -263 -10 -40 -19 -168 -26 -394 -6 -184 -16 -353 -22 -375 -6 -26 -29 -59 -62 -95 -29 -30 -64 -74 -79 -97 -14 -23 -47 -59 -72 -80 -25 -21 -59 -58 -75 -83 -16 -25 -48 -63 -70 -85 -23 -22 -64 -72 -90 -110 -26 -39 -68 -94 -93 -123 -57 -68 -81 -140 -80 -248 0 -95 26 -161 90 -234 22 -25 59 -73 82 -108 23 -34 61 -84 84 -110 23 -26 56 -70 74 -97 18 -28 53 -67 78 -88 25 -21 58 -57 72 -80 15 -23 50 -67 79 -97 64 -67 71 -92 79 -290 4 -80 10 -230 15 -335 15 -328 51 -411 237 -537 123 -83 128 -84 543 -98 179 -6 347 -15 374 -22 39 -8 60 -22 100 -63 28 -29 70 -64 93 -79 23 -14 58 -46 79 -71 21 -25 63 -61 93 -82 31 -20 69 -52 86 -71 16 -19 62 -56 100 -82 39 -26 95 -69 125 -94 67 -57 126 -76 241 -76 108 0 155 16 228 78 31 27 79 64 106 82 28 18 71 52 96 75 25 23 74 61 110 83 35 22 81 61 102 87 21 25 57 57 80 71 23 15 65 50 93 79 44 45 60 55 105 64 58 11 429 31 572 31 102 0 247 29 315 64 98 49 226 222 251 338 5 23 15 192 21 373 6 182 15 351 21 377 8 35 23 59 63 100 29 30 65 72 79 95 14 23 47 59 72 80 25 21 59 58 75 83 16 25 48 63 70 85 23 22 64 72 90 110 26 39 68 94 93 123 57 68 81 140 80 248 0 95 -26 161 -90 234 -22 25 -54 68 -73 95 -18 28 -50 68 -70 90 -20 23 -60 74 -88 115 -28 41 -69 90 -92 108 -22 19 -53 53 -67 75 -15 23 -50 67 -79 97 -64 67 -71 92 -79 290 -21 490 -24 526 -43 595 -36 135 -71 180 -206 274 -126 87 -91 82 -731 109 -212 9 -228 14 -292 83 -21 23 -57 52 -81 66 -23 14 -61 47 -85 74 -23 26 -70 67 -104 91 -34 24 -71 56 -83 71 -12 15 -55 50 -96 78 -41 27 -96 70 -124 94 -31 28 -69 50 -102 60 -65 19 -219 19 -272 -1z' fill='white' opacity='0'><animate attributeName='opacity' values='0;0;1;1;0;0' keyTimes='0;0.4970;0.5000;0.6667;0.6697;1' dur='4.8s' repeatCount='indefinite' calcMode='linear'/></path><path d='M2515 6064 c-112 -17 -162 -34 -217 -72 -24 -17 -73 -44 -110 -61 -38 -18 -82 -49 -105 -74 -21 -23 -63 -61 -92 -84 -29 -23 -62 -55 -74 -70 -11 -15 -48 -57 -81 -93 -47 -50 -65 -79 -79 -125 -10 -33 -43 -103 -72 -155 -74 -131 -88 -194 -87 -396 1 -201 12 -264 68 -387 60 -132 109 -271 138 -397 14 -58 35 -141 47 -185 21 -74 21 -88 11 -201 -8 -97 -17 -137 -41 -195 -17 -40 -45 -124 -62 -186 -19 -68 -45 -136 -66 -170 -49 -81 -60 -115 -79 -255 -27 -198 -9 -472 38 -593 6 -16 25 -49 40 -73 16 -23 40 -68 54 -98 14 -33 52 -84 92 -127 37 -40 76 -83 87 -97 11 -14 42 -43 69 -65 27 -22 68 -59 90 -83 32 -33 58 -48 115 -67 41 -14 113 -48 160 -75 118 -68 176 -80 391 -80 204 0 276 12 379 65 94 47 272 109 386 134 50 11 117 30 150 41 123 43 317 35 442 -18 38 -16 122 -44 186 -62 71 -20 139 -46 174 -67 79 -48 116 -60 244 -78 139 -19 310 -19 442 0 116 17 174 36 232 76 23 15 70 41 107 58 38 18 82 49 105 74 21 23 63 61 92 84 29 23 62 55 74 70 11 15 48 57 81 93 49 53 65 79 83 135 13 39 45 108 72 154 70 118 84 185 83 387 -1 201 -12 264 -68 386 -62 136 -110 276 -134 388 -12 52 -31 120 -43 150 -30 77 -30 296 1 380 34 93 70 201 96 290 14 47 39 107 57 135 44 70 56 107 75 247 27 198 9 472 -38 593 -6 17 -25 49 -40 73 -16 23 -40 68 -54 98 -14 33 -52 84 -92 127 -37 40 -76 83 -87 97 -11 14 -42 43 -69 65 -28 22 -67 59 -89 82 -30 33 -55 47 -115 67 -42 14 -115 48 -161 76 -116 68 -177 80 -393 80 -207 0 -270 -12 -399 -73 -103 -48 -266 -104 -399 -137 -47 -11 -121 -30 -165 -42 -74 -19 -89 -20 -201 -10 -96 8 -136 16 -191 40 -38 16 -122 44 -186 62 -71 20 -139 46 -174 67 -79 48 -116 60 -244 78 -132 18 -331 18 -454 -1z' fill='white' opacity='0'><animate attributeName='opacity' values='0;0;1;1;0;0' keyTimes='0;0.6637;0.6667;0.8333;0.8363;1' dur='4.8s' repeatCount='indefinite' calcMode='linear'/></path><path d='M4560 6233 c-100 -10 -264 -48 -396 -92 -82 -27 -189 -57 -238 -67 -73 -14 -102 -26 -155 -62 -84 -56 -124 -76 -186 -92 -68 -18 -102 -36 -155 -83 -25 -21 -79 -56 -120 -77 -41 -21 -91 -55 -110 -75 -19 -20 -65 -52 -102 -71 -36 -18 -92 -58 -125 -87 -32 -30 -83 -70 -113 -90 -30 -19 -75 -56 -100 -82 -25 -26 -71 -65 -102 -86 -32 -22 -76 -64 -99 -94 -22 -29 -51 -61 -64 -69 -13 -9 -48 -47 -77 -86 -29 -38 -108 -130 -176 -205 -93 -102 -131 -152 -154 -203 -20 -43 -53 -90 -93 -132 -46 -47 -69 -81 -85 -125 -12 -33 -43 -89 -69 -125 -63 -84 -74 -108 -101 -208 -17 -62 -34 -98 -70 -147 -37 -50 -53 -84 -69 -147 -23 -90 -75 -252 -114 -363 -36 -98 -51 -301 -44 -597 7 -294 23 -376 94 -483 18 -27 44 -83 58 -125 30 -89 52 -126 123 -212 29 -34 66 -80 83 -101 17 -21 56 -56 87 -79 31 -23 83 -65 114 -95 62 -58 79 -66 185 -94 39 -10 111 -38 160 -63 135 -69 213 -79 543 -74 308 6 384 18 627 97 81 27 188 57 238 67 77 15 100 25 168 71 46 31 105 61 145 74 98 30 123 42 176 88 27 23 83 59 125 81 42 21 92 55 111 75 19 20 66 53 104 73 38 20 95 59 125 87 31 29 83 70 116 92 33 23 78 60 100 83 22 23 66 60 97 81 32 22 76 63 97 92 22 29 53 62 70 75 16 12 44 43 62 69 18 27 60 78 93 114 181 195 218 241 248 306 20 45 52 90 93 133 48 50 68 80 86 128 12 35 42 89 67 120 58 75 77 113 100 206 11 43 32 94 46 114 14 20 37 53 51 72 15 22 38 88 60 170 19 74 53 182 75 239 57 146 64 208 65 566 0 265 -3 322 -18 393 -22 97 -35 130 -77 192 -16 25 -40 74 -51 110 -25 75 -64 156 -79 165 -6 4 -45 49 -86 101 -41 52 -101 113 -132 136 -31 22 -83 65 -114 95 -62 58 -79 66 -185 94 -39 10 -111 38 -160 63 -127 65 -206 76 -502 74 -130 0 -252 -3 -271 -5z' fill='white' opacity='0'><animate attributeName='opacity' values='0;0;1;1;0' keyTimes='0;0.8303;0.8333;0.9970;1' dur='4.8s' repeatCount='indefinite' calcMode='linear'/></path></g></g></svg>") !important;
+    mask-size: contain !important;
+    -webkit-mask-size: contain !important;
+    mask-position: center center !important;
+    -webkit-mask-position: center center !important;
+    mask-repeat: no-repeat !important;
+    -webkit-mask-repeat: no-repeat !important;
+    border: none !important;
+    border-radius: 0 !important;
+  }
+
+  /* Hide inner drawings of spinners so they do not show underneath our mask-image */
+  .anim-rotate > *,
+  .Spinner > *,
+  svg.anim-rotate > *,
+  svg.Spinner > *,
+  .loading-spinner svg,
+  [class*="loading-spinner"] svg,
+  [class*="spinner-icon"] svg,
+  svg[class*="animate-spin"] svg,
+  .animate-spin svg,
+  mat-spinner svg,
+  mat-progress-spinner svg,
+  .mat-mdc-progress-spinner svg,
+  .mat-progress-spinner svg,
+  .gmat-mdc-progress-spinner svg,
+  .thinking-dots-animation[lottie-animation] svg,
+  [role="progressbar"]:not(input):not(textarea):not([contenteditable]) svg,
+  [role="progressbar"]:not(input):not(textarea):not([contenteditable]) > * {
+    display: none !important;
+  }
+
+  /* Override specific spin styles to allow smooth SMIL internal rotations to dominate */
+  svg.anim-rotate,
+  svg.Spinner,
+  .anim-rotate,
+  .Spinner {
+    animation: none !important;
+  }
+
+}
+
+}
