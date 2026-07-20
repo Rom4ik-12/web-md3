@@ -1,0 +1,319 @@
+/* ==UserStyle==
+@name         Google Search Material You / MD3 (Dynamic & Animated)
+@namespace    github.com/openstyles/stylus
+@version      1.0.0
+@description  A beautiful Material Design 3 (MD3) style for Google Search with rounded pill search bar, chip filter tabs, rounded cards, animated ripples, and full dark/light theme support.
+@author       Antigravity
+@license      MIT
+==/UserStyle== */
+
+@-moz-document regexp("https?://(?!gemini\\.)([a-z0-9-]+\\.)?google\\.[a-z]{2,4}(\\.[a-z]{2})?(/.*)?") {
+  :root {
+    --md3-primary: #1a73e8; /* Google Blue */
+    --md3-on-primary: #ffffff;
+    --md3-primary-container: #d2e3fc;
+    --md3-on-primary-container: #174ea6;
+    --md3-surface: #ffffff;
+    --md3-on-surface: #202124;
+    --md3-surface-variant: #f1f3f4;
+    --md3-on-surface-variant: #5f6368;
+    --md3-outline: #dadce0;
+    --md3-background: #ffffff;
+    --md3-on-background: #202124;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --md3-primary: #8ab4f8;
+      --md3-on-primary: #202124;
+      --md3-primary-container: #174ea6;
+      --md3-on-primary-container: #d2e3fc;
+      --md3-surface: #202124;
+      --md3-on-surface: #e8eaed;
+      --md3-surface-variant: #303134;
+      --md3-on-surface-variant: #c4c7c5;
+      --md3-outline: #5f6368;
+      --md3-background: #171717;
+      --md3-on-background: #e8eaed;
+    }
+  }
+
+  /* Apply background and text colors to the page */
+  body, #gsr, #main, #cnt, .L3eUgb {
+    background-color: var(--md3-background) !important;
+    color: var(--md3-on-background) !important;
+  }
+
+  /* ==========================================
+     1. Search Input Bar (MD3 Pill Search Bar)
+     ========================================== */
+  .RNNXgb, .sbiicg, .og3lme {
+    border-radius: 28px !important;
+    background-color: var(--md3-surface-variant) !important;
+    border: 1px solid var(--md3-outline) !important;
+    box-shadow: none !important;
+    transition: background-color 0.2s, box-shadow 0.2s, border-color 0.2s !important;
+  }
+
+  .RNNXgb:hover, .RNNXgb:focus-within {
+    background-color: var(--md3-surface) !important;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28) !important;
+    border-color: transparent !important;
+  }
+
+  /* Search button inside input */
+  .gNO89b, .Tg755, .lsb {
+    background-color: var(--md3-surface-variant) !important;
+    color: var(--md3-on-surface-variant) !important;
+    border-radius: 20px !important;
+    border: none !important;
+    padding: 0 16px !important;
+    font-weight: 500 !important;
+    height: 36px !important;
+    transition: background-color 0.2s, box-shadow 0.2s, color 0.2s !important;
+  }
+
+  .gNO89b:hover, .Tg755:hover {
+    background-color: var(--md3-primary-container) !important;
+    color: var(--md3-on-primary-container) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  /* ==========================================
+     2. Navigation Tabs / Filter Chips
+     ========================================== */
+  .hdtb-mitem a, .O3S9Cc a, .q, a.q, .crJ5n a, .nPDNef {
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 8px 16px !important;
+    border-radius: 16px !important;
+    border: 1px solid var(--md3-outline) !important;
+    background-color: transparent !important;
+    color: var(--md3-on-surface-variant) !important;
+    margin: 4px !important;
+    text-decoration: none !important;
+    transition: all 0.2s !important;
+    font-size: 14px !important;
+  }
+
+  .hdtb-mitem a:hover, .O3S9Cc a:hover, a.q:hover, .crJ5n a:hover {
+    background-color: var(--md3-surface-variant) !important;
+    color: var(--md3-on-surface) !important;
+  }
+
+  /* Active chip styling */
+  .hdtb-mitem.hdtb-msel, 
+  .hdtb-mitem a[aria-current="page"], 
+  .O3S9Cc.hdtb-msel, 
+  .crJ5n [aria-current="page"],
+  .crJ5n a.q[aria-current="page"] {
+    background-color: var(--md3-primary-container) !important;
+    color: var(--md3-on-primary-container) !important;
+    border-color: transparent !important;
+    font-weight: 500 !important;
+  }
+
+  /* Remove default Google active tab bottom border line */
+  .crJ5n::after, .crJ5n .hdtb-msel::after, .crJ5n .q::after {
+    display: none !important;
+  }
+
+  /* ==========================================
+     3. Search Result Cards
+     ========================================== */
+  .g, .MjjY1e, .kp-blk, .mnr-c, .nawv0d, .NFQFxe, .IFvyBc {
+    border-radius: 16px !important;
+    padding: 16px !important;
+    background-color: var(--md3-surface) !important;
+    border: 1px solid var(--md3-outline) !important;
+    margin-bottom: 16px !important;
+    box-shadow: none !important;
+    transition: box-shadow 0.2s, border-color 0.2s !important;
+  }
+
+  .g:hover, .MjjY1e:hover {
+    border-color: var(--md3-primary) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  /* Links styling in search results */
+  .LC20lb, .DKV0Md {
+    color: var(--md3-primary) !important;
+  }
+
+  .LC20lb:hover {
+    text-decoration: underline !important;
+  }
+
+  /* Snippet description text */
+  .VwiC3b, .yGridH {
+    color: var(--md3-on-surface-variant) !important;
+  }
+
+  /* ==========================================
+     4. Pagination
+     ========================================== */
+  #nav td a, #nav td.cur {
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    text-decoration: none !important;
+    transition: all 0.2s !important;
+    margin: 0 4px !important;
+  }
+
+  #nav td.cur {
+    background-color: var(--md3-primary) !important;
+    color: var(--md3-on-primary) !important;
+    font-weight: bold !important;
+  }
+
+  #nav td a:hover {
+    background-color: var(--md3-primary-container) !important;
+    color: var(--md3-on-primary-container) !important;
+  }
+
+  /* Hide the Goooooogle letters image container since we style the navigation numbers beautifully */
+  .SJn5Q {
+    display: none !important;
+  }
+
+  /* ==========================================
+     5. MD3 Wavy Linear Progress Bar & Dots
+     ========================================== */
+  div[class*="loading-graphic"],
+  div[class*="classic-loading"],
+  div[class*="superglass-loading"],
+  div[class*="loading-dots"],
+  div[class*="thinking-dots"],
+  div[class*="dots-animation"],
+  [class*="classic-loading-dots"],
+  .superglass-loading-graphic,
+  .classic-loading-graphic,
+  .sge-loading-graphic,
+  .sge-loading-dots,
+  .superglass-loading-dots,
+  .loading-dots,
+  g-loading-icon,
+  g-spinner,
+  g-dots,
+  .g-spinner,
+  .E1ndCc,
+  [role="progressbar"],
+  [class*="classic-loading"],
+  svg[class*="loading-graphic"],
+  svg[class*="classic-loading"],
+  svg[class*="superglass-loading"],
+  svg[class*="loading-dots"],
+  svg.superglass-loading-graphic,
+  svg.classic-loading-graphic,
+  svg.sge-loading-graphic,
+  svg.E1ndCc {
+    background-color: transparent !important;
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+    border-radius: 0 !important;
+    height: 40px;
+    width: 100% !important;
+    max-width: 100% !important;
+    position: relative !important;
+    overflow: hidden !important;
+    display: flex;
+    align-items: center !important;
+    margin: 12px 0;
+  }
+
+  /* Hide original internal drawings/shapes/paths/dots */
+  div[class*="loading-graphic"] *,
+  div[class*="classic-loading"] *,
+  div[class*="superglass-loading"] *,
+  div[class*="loading-dots"] *,
+  div[class*="thinking-dots"] *,
+  div[class*="dots-animation"] *,
+  .superglass-loading-graphic *,
+  .classic-loading-graphic *,
+  .sge-loading-graphic *,
+  .sge-loading-dots *,
+  .superglass-loading-dots *,
+  .loading-dots *,
+  g-loading-icon *,
+  g-spinner *,
+  g-dots *,
+  .g-spinner *,
+  .E1ndCc *,
+  [role="progressbar"] *,
+  [class*="classic-loading"] * {
+    display: none !important;
+  }
+
+  /* 1. Track: Straight background line */
+  div[class*="loading-graphic"]::before,
+  div[class*="classic-loading"]::before,
+  div[class*="superglass-loading"]::before,
+  div[class*="loading-dots"]::before,
+  div[class*="thinking-dots"]::before,
+  div[class*="dots-animation"]::before,
+  .superglass-loading-graphic::before,
+  .classic-loading-graphic::before,
+  .sge-loading-graphic::before,
+  .sge-loading-dots::before,
+  .superglass-loading-dots::before,
+  .loading-dots::before,
+  g-loading-icon::before,
+  g-spinner::before,
+  g-dots::before,
+  .g-spinner::before,
+  .E1ndCc::before,
+  [role="progressbar"]::before,
+  [class*="classic-loading"]::before {
+    content: "" !important;
+    position: absolute !important;
+    left: 10px !important;
+    right: 10px !important;
+    height: 4px !important;
+    background-color: var(--md3-primary) !important;
+    opacity: 0.12 !important;
+    border-radius: 2px !important;
+  }
+
+  /* 2. Active wave: Overlay with animated SVG mask */
+  div[class*="loading-graphic"]::after,
+  div[class*="classic-loading"]::after,
+  div[class*="superglass-loading"]::after,
+  div[class*="loading-dots"]::after,
+  div[class*="thinking-dots"]::after,
+  div[class*="dots-animation"]::after,
+  .superglass-loading-graphic::after,
+  .classic-loading-graphic::after,
+  .sge-loading-graphic::after,
+  .sge-loading-dots::after,
+  .superglass-loading-dots::after,
+  .loading-dots::after,
+  g-loading-icon::after,
+  g-spinner::after,
+  g-dots::after,
+  .g-spinner::after,
+  .E1ndCc::after,
+  [role="progressbar"]::after,
+  [class*="classic-loading"]::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 100% !important;
+    background-color: var(--md3-primary) !important;
+    
+    /* Exact MD3 Wavy Linear Mask with built-in SMIL dashoffset animation from index.html */
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 40'><path pathLength='100' d='M -120 20 Q -113.75 16, -107.5 20 T -95 20 T -82.5 20 T -70 20 T -57.5 20 T -45 20 T -32.5 20 T -20 20 T -7.5 20 T 5 20 T 17.5 20 T 30 20 T 42.5 20 T 55 20 T 67.5 20 T 80 20 T 92.5 20 T 105 20 T 117.5 20 T 130 20 T 142.5 20 T 155 20 T 167.5 20 T 180 20 T 192.5 20 T 205 20 T 217.5 20 T 230 20 T 242.5 20 T 255 20 T 267.5 20 T 280 20 T 292.5 20 T 305 20 T 317.5 20 T 330 20 T 342.5 20 T 355 20 T 367.5 20 T 380 20 T 392.5 20 T 405 20 T 417.5 20 T 430 20 T 442.5 20 T 455 20 T 467.5 20 T 480 20 T 492.5 20 T 505 20 T 517.5 20' fill='none' stroke='black' stroke-width='4.5' stroke-linecap='round' stroke-dasharray='22 78'><animate attributeName='stroke-dashoffset' from='0' to='-100' dur='2.5s' repeatCount='indefinite'/></path></svg>") !important;
+    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 40'><path pathLength='100' d='M -120 20 Q -113.75 16, -107.5 20 T -95 20 T -82.5 20 T -70 20 T -57.5 20 T -45 20 T -32.5 20 T -20 20 T -7.5 20 T 5 20 T 17.5 20 T 30 20 T 42.5 20 T 55 20 T 67.5 20 T 80 20 T 92.5 20 T 105 20 T 117.5 20 T 130 20 T 142.5 20 T 155 20 T 167.5 20 T 180 20 T 192.5 20 T 205 20 T 217.5 20 T 230 20 T 242.5 20 T 255 20 T 267.5 20 T 280 20 T 292.5 20 T 305 20 T 317.5 20 T 330 20 T 342.5 20 T 355 20 T 367.5 20 T 380 20 T 392.5 20 T 405 20 T 417.5 20 T 430 20 T 442.5 20 T 455 20 T 467.5 20 T 480 20 T 492.5 20 T 505 20 T 517.5 20' fill='none' stroke='black' stroke-width='4.5' stroke-linecap='round' stroke-dasharray='22 78'><animate attributeName='stroke-dashoffset' from='0' to='-100' dur='2.5s' repeatCount='indefinite'/></path></svg>") !important;
+    
+    -webkit-mask-size: 100% 100% !important;
+    mask-size: 100% 100% !important;
+    -webkit-mask-repeat: no-repeat !important;
+    mask-repeat: no-repeat !important;
+  }
+
+}

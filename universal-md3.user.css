@@ -7,14 +7,14 @@
 @license      MIT
 ==/UserStyle== */
 
-@-moz-document regexp("https?://.*") {
+@-moz-document regexp("https?://(?!([^/]+\\.)?(youtube\\.com|chatgpt\\.com|chat\\.openai\\.com|gemini\\.google\\.com|google\\.[a-z]{2,4}(\\.[a-z]{2})?)).*") {
 
   :root {
     /* Safe dynamic color derivation based on website variables + fallbacks */
-    --md3-primary: var(--primary, var(--theme-color, var(--accent, var(--main-color, var(--color-primary, var(--color-accent, var(--yt-spec-brand-link-text, var(--google-blue-500, #6750a4))))))));
-    --md3-on-primary: #ffffff;
-    --md3-surface-container-highest: rgba(120, 120, 120, 0.12);
-    --md3-outline: rgba(120, 120, 120, 0.5);
+    --md3-primary: var(--primary, var(--theme-color, var(--accent, var(--main-color, var(--color-primary, var(--color-accent, var(--brand, var(--brand-color, var(--accent-color, var(--primary-color, var(--link-color, var(--color-link, var(--color-brand, var(--color-accent-fg, var(--tg-theme-link-color, var(--tg-theme-button-color, var(--twitter-accent-color, var(--theme-link-color, var(--theme-primary-color, var(--vk-accent, var(--yt-spec-brand-link-text, var(--google-blue-500, var(--gm3-sys-color-primary, #6750a4)))))))))))))))))))))));
+    --md3-on-primary: var(--on-primary, var(--color-on-primary, #ffffff));
+    --md3-surface-container-highest: color-mix(in srgb, currentColor 12%, transparent);
+    --md3-outline: color-mix(in srgb, currentColor 40%, transparent);
   }
 
   /* ==========================================
